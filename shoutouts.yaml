@@ -1,0 +1,34 @@
+# Shout-Outs — Recognition Tracker
+#
+# Track contributions worth recognizing at all-hands.
+# Claude auto-detects candidates during /gm, /triage, /1on1, and /weekly.
+# You can also add manually with /shoutouts add.
+#
+# Workflow:
+#   1. Shout-outs accumulate here between all-hands meetings
+#   2. Before all-hands, run /shoutouts review to see what's pending
+#   3. Run /shoutouts draft to get ready-to-deliver messages
+#   4. After delivery, mark as delivered
+
+shoutouts: []
+
+# Example format:
+#
+# shoutouts:
+#   - person: "Yuya Fujimoto"
+#     reason: "Shipped ASC parser ahead of schedule with comprehensive test coverage"
+#     date_added: "2026-02-18"
+#     source: "weekly-retro"
+#     delivered: false
+#
+#   - person: "Gareth Ivatt"
+#     reason: "Proactively identified and fixed a performance regression before it hit production"
+#     date_added: "2026-02-15"
+#     source: "triage"
+#     delivered: false
+#
+#   - person: "Tricia MacPherson"
+#     reason: "Mentored Cristiano through his first production deployment"
+#     date_added: "2026-02-12"
+#     source: "1on1-prep"
+#     delivered: true

@@ -9,25 +9,45 @@
 
 tasks: []
 
-# Example task format:
+# Example task format for engineering managers:
 #
 # tasks:
 #   - id: "task-001"
-#     title: "Draft Q1 board update"
-#     description: "Prepare quarterly board update deck with metrics and narrative"
+#     title: "Prep 1:1 with Tricia"
+#     description: "Review her Linear activity, check on auth refactor progress, prep coaching points"
 #     status: "pending"
 #     priority: 2
-#     due_date: "2026-03-15"
-#     goal_alignment: "board-communication"
-#     created: "2026-01-15"
+#     due_date: "2026-02-24"
+#     goal_alignment: "coaching-practice"
+#     created: "2026-02-20"
 #     notes: ""
 #
 #   - id: "task-002"
-#     title: "Review hiring pipeline"
-#     description: "Review all open roles and candidate pipeline with recruiting"
+#     title: "Review hiring pipeline for ASC role"
+#     description: "Check candidate status, follow up with recruiting, update job posting if needed"
 #     status: "in_progress"
+#     priority: 1
+#     due_date: "2026-02-21"
+#     goal_alignment: "hire-asc-engineer"
+#     created: "2026-02-18"
+#     notes: "3 candidates in screening stage"
+#
+#   - id: "task-003"
+#     title: "Write Q1 performance reviews"
+#     description: "Draft performance review for each direct report based on 1:1 notes, Linear data, and coaching observations"
+#     status: "pending"
+#     priority: 2
+#     due_date: "2026-03-15"
+#     goal_alignment: "coaching-practice"
+#     created: "2026-02-20"
+#     notes: "Start with engineers who have the most 1:1 history"
+#
+#   - id: "task-004"
+#     title: "Draft RFC feedback for new auth system"
+#     description: "Review Tricia's auth system RFC and provide technical feedback"
+#     status: "pending"
 #     priority: 3
-#     due_date: "2026-02-01"
-#     goal_alignment: "build-team"
-#     created: "2026-01-20"
-#     notes: "Sarah shared updated spreadsheet on Jan 25"
+#     due_date: "2026-02-26"
+#     goal_alignment: "stay-technical"
+#     created: "2026-02-20"
+#     notes: "RFC shared in #engineering Slack channel"

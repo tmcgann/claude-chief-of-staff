@@ -1,3 +1,9 @@
+---
+name: my-tasks
+description: Task tracking with execution support. Track, prioritize, and actively work on tasks with goal alignment and due date awareness.
+argument-hint: "[list|add|complete|execute|overdue]"
+---
+
 # /my-tasks — Task Management
 
 ## Description

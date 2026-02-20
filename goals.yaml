@@ -1,4 +1,4 @@
-# Goals — Your Quarterly Objectives
+# Goals — Engineering Manager Quarterly Objectives
 #
 # This file is the source of truth for "what should I be working on?"
 # Claude references it constantly when prioritizing your time,
@@ -14,45 +14,59 @@
 #   - Claude will flag when progress stalls
 
 quarter: "Q1 2026"
-last_updated: "2026-01-01"
+last_updated: "2026-02-20"
 
 objectives:
-  - name: "Example: Launch new product feature"
-    target: "Ship to 100% of users by end of Q1"
+  - name: "Hire and onboard ASC squad engineer"
+    target: "New engineer productive on ASC squad by end of Q1"
     priority: 1
     key_results:
-      - "Feature spec complete by Jan 31"
-      - "Beta with 10 customers by Feb 28"
-      - "Full rollout by Mar 31"
+      - "Job description finalized and posted by Feb 28"
+      - "Pipeline of 5+ qualified candidates by Mar 7"
+      - "Offer extended by Mar 21"
+      - "Onboarding plan ready before start date"
     progress: 0.0
     status: "on_track"   # on_track | at_risk | behind | complete
-    notes: ""
+    notes: "ASC squad is understaffed with just Yuya — high priority"
 
-  - name: "Example: Grow revenue 30%"
-    target: "$X pipeline by end of quarter"
+  - name: "Improve team delivery velocity"
+    target: "Reduce cycle time and increase predictability across all 3 squads"
     priority: 2
     key_results:
-      - "Hire 2 sales reps by Feb 15"
-      - "Launch outbound motion by Feb 28"
-      - "Close 5 new enterprise deals by Mar 31"
+      - "Establish sprint velocity baselines for each squad by Feb 28"
+      - "Reduce average cycle time by 20% by end of Q1"
+      - "Zero missed sprint commitments for 3 consecutive sprints"
     progress: 0.0
     status: "on_track"
     notes: ""
 
-  - name: "Example: Build high-performing team"
-    target: "Complete hiring plan and establish rituals"
+  - name: "Develop coaching practice with direct reports"
+    target: "Every direct report has clear growth goals and receives regular feedback"
     priority: 3
     key_results:
-      - "Fill 3 open roles by Feb 28"
-      - "Launch weekly team sync and monthly retrospective"
-      - "Complete first round of performance reviews"
+      - "Growth areas documented for all 7 engineers by Feb 28"
+      - "Deliver at least 1 piece of constructive feedback per 1:1 cycle"
+      - "Each engineer has a career development conversation by end of Q1"
     progress: 0.0
     status: "on_track"
     notes: ""
+
+  - name: "Reduce tech debt in platform infrastructure"
+    target: "Platform squad addresses top tech debt items impacting velocity"
+    priority: 4
+    key_results:
+      - "Tech debt inventory prioritized with Platform squad by Feb 28"
+      - "Top 3 tech debt items resolved by end of Q1"
+      - "Platform reliability metrics stable or improving"
+    progress: 0.0
+    status: "on_track"
+    notes: "Coordinate with Gareth, Miguel, Richard on priorities"
 
 # Personal goals (optional — Claude respects work-life balance)
 personal:
-  - name: "Example: Exercise 4x per week"
+  - name: "Grow as an engineering leader"
     progress: 0.0
-  - name: "Example: Read 12 books this year"
+    notes: "Read 1 management book per month, seek feedback from Firas"
+  - name: "Stay technical — contribute to AI/infra/tooling"
     progress: 0.0
+    notes: "Dedicate at least 4 hours/week to hands-on technical work"

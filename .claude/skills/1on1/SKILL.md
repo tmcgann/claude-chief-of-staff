@@ -1,0 +1,130 @@
+---
+name: 1on1
+description: 1:1 prep for direct reports. Pulls context from Linear, Slack, Notion, coaching notes, and shout-outs to generate a structured prep document. Use before any 1:1 meeting.
+argument-hint: "<name>"
+---
+
+# /1on1 — 1:1 Prep
+
+## Description
+Prepare for your next 1:1 with a direct report. Pulls context from Linear, Slack,
+calendar, contact files, and meeting notes to generate a structured prep document.
+
+## Arguments
+- `<name>` — Prep for 1:1 with a specific person (e.g., `/1on1 tricia`)
+- (no argument) — Prep for the next upcoming 1:1 on your calendar
+
+## Instructions
+
+You are preparing Taylor for a 1:1 with a direct report. The goal is a
+focused, useful prep doc that makes the conversation more productive.
+
+### Step 0: Identify the Direct Report
+
+If a name was provided:
+- Match it to Taylor's team: Yuya Fujimoto, Tricia MacPherson, Cristiano Firmani,
+  Gareth Ivatt, Miguel Hernandez, Richard Cook
+- Fuzzy match is fine (e.g., "tricia" -> Patricia MacPherson)
+
+If no name was provided:
+- Check the calendar for the next upcoming 1:1 meeting
+- Identify the direct report from the meeting attendees
+
+If no match found, ask Taylor who they'd like to prep for.
+
+### Step 1: Pull Contact File
+
+Read the contact file from `~/.claude/contacts/` for this person.
+
+Extract:
+- Squad assignment
+- Current growth areas and coaching goals
+- Last 1:1 summary and open action items
+- Recent feedback delivered (positive + constructive)
+- Career aspirations
+- Shout-out candidates
+
+If no contact file exists, note this and suggest creating one after the 1:1.
+
+### Step 2: Check Linear (if connected)
+
+Pull this person's recent Linear activity:
+- Issues completed in the last 2 weeks
+- Issues currently in progress
+- Issues that are blocked (and what's blocking them)
+- Any overdue issues
+
+### Step 3: Scan Slack (if connected)
+
+Check recent Slack interactions:
+- Any DMs between Taylor and this person in the last 2 weeks
+- Mentions of this person in relevant channels
+- Any blockers or escalations they've raised
+
+### Step 4: Check Notion (if connected)
+
+Pull from the 1:1 Notion database:
+- Last 1:1 notes
+- Open action items from previous 1:1s
+- Any standing agenda items
+
+### Step 5: Check Meeting Notes (if Granola connected)
+
+Search for recent meeting notes involving this person:
+- What meetings have they been in?
+- Any decisions or action items that affect them?
+
+### Step 6: Check Shout-Out Log
+
+Read `~/.claude/shoutouts.yaml` for any pending recognition for this person.
+
+### Step 7: Generate Prep Document
+
+Format the prep as follows:
+
+```
+1:1 PREP — [Name] ([Squad] squad)
+[Date] | Last 1:1: [date]
+
+OPEN ACTION ITEMS (from last 1:1)
+- [ ] [action item] — [status if known]
+- [ ] [action item]
+
+THEIR RECENT WORK (from Linear)
+- Completed: [list]
+- In progress: [list]
+- Blocked: [list with blockers]
+
+SUGGESTED TOPICS
+1. [Topic] — [why this matters / what to ask]
+2. [Topic] — [context]
+3. [Topic] — [context]
+
+FEEDBACK TO DELIVER
+Positive:
+- [Specific thing to recognize and why]
+
+Constructive (if any):
+- [Specific observation and suggested framing]
+
+COACHING / GROWTH
+- Current growth area: [area]
+- Progress observed: [what you've seen]
+- Suggested question: "[coaching question]"
+
+SHOUT-OUT CANDIDATES
+- [Contribution worth recognizing at all-hands]
+
+CAREER CHECK-IN
+- Aspirations: [what they've said they want]
+- Suggested question: "[career-oriented question]"
+```
+
+### Guidelines
+
+- Keep it to one screen. This is a prep doc, not a dossier.
+- Prioritize action items and blockers — those drive the most productive 1:1s.
+- If there's no feedback to deliver, suggest looking for something to recognize.
+- Coaching questions should be open-ended, not leading.
+- If the contact file is thin, suggest specific things to learn in this 1:1.
+- End with: "Want me to update [Name]'s contact file after the 1:1?"
