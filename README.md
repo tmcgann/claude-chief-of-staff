@@ -101,9 +101,22 @@ claude-chief-of-staff/
     └── customization.md              # Customization guide
 ```
 
-Skills live in `.claude/skills/` which is the standard Claude Code convention. They work automatically when you're in this project directory. Run `install.sh` to also install them globally to `~/.claude/skills/` so they work from any project.
+### How skills work
 
-**Updating:** Re-run `install.sh` anytime to sync skills to the latest version. It will overwrite skills but preserve your user data (goals, tasks, contacts, shout-outs).
+This repo is a **configuration repository** — you edit and improve skills here, but you use them everywhere else (your main codebase, home directory, etc.).
+
+Claude Code only loads project-level skills from the directory you're working in. So `.claude/skills/` in this repo lets you **test** skills before deploying, but to actually use `/gm` from your day-to-day projects, you need them installed globally.
+
+**`install.sh` handles this.** It copies skills to `~/.claude/skills/` where Claude Code loads them regardless of your working directory.
+
+| Location | Purpose |
+|----------|---------|
+| `.claude/skills/` (this repo) | Author, edit, and test skills |
+| `~/.claude/skills/` (global) | Use skills from anywhere — deployed by `install.sh` |
+
+### Updating skills
+
+Re-run `install.sh` anytime after pulling changes. It always syncs skills to the latest version, removes skills that no longer exist in the repo, and preserves your user data (goals, tasks, contacts, shout-outs).
 
 ---
 
