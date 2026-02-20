@@ -1,14 +1,16 @@
-# MCP Server Setup
+# MCP Server Setup (Engineering Manager Edition)
 
-MCP (Model Context Protocol) servers give Claude access to external services
-like Gmail, Google Calendar, Slack, and more. The more servers you connect,
-the more powerful your AI Chief of Staff becomes.
+MCP (Model Context Protocol) servers give Claude access to external services.
+The more servers you connect, the more powerful your AI Chief of Staff becomes.
+
+For engineering managers, the key integrations are communication (Slack, email),
+work tracking (Linear), and scheduling (Calendar).
 
 ---
 
 ## Required Servers
 
-These two servers are the minimum for a useful experience.
+These are the minimum for a useful engineering management experience.
 
 ### Gmail
 
@@ -17,7 +19,6 @@ Enables: Email triage, drafting, sending, searching
 **Installation:**
 
 ```bash
-# Using the Gmail MCP server
 npx @anthropic-ai/claude-code mcp add gmail
 ```
 
@@ -25,8 +26,7 @@ Follow the OAuth flow to authorize access to your Gmail account.
 
 **Configuration:**
 
-The Gmail MCP server is configured in your Claude Code MCP settings. The exact
-location depends on your installation, but is typically at:
+The Gmail MCP server is configured in your Claude Code MCP settings, typically at:
 
 ```
 ~/.claude/mcp_settings.json
@@ -34,18 +34,11 @@ location depends on your installation, but is typically at:
 
 **Multiple accounts:**
 
-If you have separate work and personal Gmail accounts, you can add them as
-separate MCP servers:
+If you have separate work and personal Gmail accounts:
 
 ```bash
 npx @anthropic-ai/claude-code mcp add gmail         # Work account
 npx @anthropic-ai/claude-code mcp add gmail-personal # Personal account
-```
-
-Update your CLAUDE.md to reference both servers:
-```markdown
-| Gmail (work) | Connected | Work email triage |
-| Gmail (personal) | Connected | Personal email triage |
 ```
 
 **Verify it works:**
@@ -77,13 +70,12 @@ Follow the OAuth flow to authorize calendar access.
 
 ---
 
-## Recommended Servers
-
-These significantly enhance the experience but aren't strictly required.
-
 ### Slack
 
-Enables: Slack DM triage, channel monitoring, message drafting
+Enables: Slack DM triage, channel monitoring, message drafting, team communication
+
+This is critical for engineering managers — most day-to-day communication
+with your team happens here.
 
 **Installation:**
 
@@ -98,93 +90,20 @@ im:history, search:read, chat:write, users:read).
 
 ```
 > Show me my recent Slack DMs
-> Search Slack for messages about "product launch"
-```
-
----
-
-## Optional Servers
-
-Add these based on your workflow.
-
-### WhatsApp
-
-Enables: WhatsApp message triage, contact search, messaging
-
-**Note:** WhatsApp MCP requires a bridge service. Setup varies by implementation.
-
-```bash
-npx @anthropic-ai/claude-code mcp add whatsapp
-```
-
-**Verify it works:**
-
-```
-> Show my recent WhatsApp messages
-```
-
----
-
-### iMessage (macOS Only)
-
-Enables: iMessage triage, reading messages
-
-**Note:** Only works on macOS. Requires accessibility permissions.
-
-```bash
-npx @anthropic-ai/claude-code mcp add imessage
-```
-
-**Verify it works:**
-
-```
-> Show my recent iMessages
-```
-
----
-
-### Granola
-
-Enables: Meeting notes search and retrieval
-
-Granola records and summarizes your meetings. The MCP server lets Claude
-search and retrieve those notes.
-
-```bash
-npx @anthropic-ai/claude-code mcp add granola
-```
-
-**Verify it works:**
-
-```
-> Search my meeting notes for "product roadmap"
-```
-
----
-
-### PostHog
-
-Enables: Product analytics queries, dashboard access
-
-Useful for product leaders who want Claude to pull metrics during conversations.
-
-```bash
-npx @anthropic-ai/claude-code mcp add posthog
-```
-
-**Verify it works:**
-
-```
-> What's our weekly active users trend?
+> Search Slack for messages about "deployment"
 ```
 
 ---
 
 ### Linear
 
-Enables: Issue tracking, project management, engineering workflow
+Enables: Issue tracking, sprint status, squad health, blocker detection
 
-Useful for engineering leaders managing sprints and backlogs.
+Linear is the backbone of engineering work tracking. With Linear connected,
+Claude can pull squad-level status, detect blockers, track velocity, and
+prep for planning sessions.
+
+**Installation:**
 
 ```bash
 npx @anthropic-ai/claude-code mcp add linear
@@ -194,6 +113,93 @@ npx @anthropic-ai/claude-code mcp add linear
 
 ```
 > Show my assigned Linear issues
+> What issues are blocked in the Platform squad?
+```
+
+---
+
+## Recommended Servers
+
+These significantly enhance the experience but aren't strictly required.
+
+### Notion
+
+Enables: 1:1 notes access, quarterly goal tracking, team documentation
+
+If your 1:1s are tracked in Notion (as Taylor's are), this integration
+unlocks rich 1:1 prep with historical context.
+
+**Installation:**
+
+```bash
+npx @anthropic-ai/claude-code mcp add notion
+```
+
+You'll need a Notion integration token with access to relevant databases.
+
+**Setup:**
+1. Create a Notion integration at https://www.notion.so/my-integrations
+2. Share your 1:1 database with the integration
+3. Share any relevant team docs or goal-tracking databases
+
+**Verify it works:**
+
+```
+> Search my Notion for "1:1 notes"
+```
+
+---
+
+### Granola
+
+Enables: Meeting notes search and retrieval
+
+Granola records and summarizes your meetings. The MCP server lets Claude
+search and retrieve those notes for meeting prep and context.
+
+```bash
+npx @anthropic-ai/claude-code mcp add granola
+```
+
+**Verify it works:**
+
+```
+> Search my meeting notes for "sprint planning"
+```
+
+---
+
+## Optional Servers
+
+Add these based on your workflow.
+
+### GitHub
+
+Enables: PR review queue, CI status, code context, @mention tracking
+
+Useful if you're doing code reviews or staying hands-on with technical work.
+
+```bash
+npx @anthropic-ai/claude-code mcp add github
+```
+
+**Verify it works:**
+
+```
+> Show PRs where I'm requested as a reviewer
+```
+
+---
+
+### Workable (or your ATS)
+
+Enables: Hiring pipeline tracking, candidate status, interview scheduling
+
+If your company uses Workable or another ATS with MCP support, connecting
+it automates the `/hiring status` pipeline view.
+
+```bash
+npx @anthropic-ai/claude-code mcp add workable
 ```
 
 ---
@@ -246,14 +252,17 @@ permissions). Check the server's documentation for specific troubleshooting.
 
 ---
 
-## What to Connect First
+## Recommended Connection Order
 
 If you're just getting started, connect servers in this order:
 
-1. **Gmail** — Unlocks email triage (biggest productivity win)
+1. **Gmail** — Unlocks email triage (essential baseline)
 2. **Google Calendar** — Unlocks scheduling intelligence
-3. **Slack** — Unlocks Slack triage (if your team uses Slack)
-4. **Everything else** — Add as needed based on your workflow
+3. **Slack** — Unlocks team communication triage (where most EM work happens)
+4. **Linear** — Unlocks squad status, blocker detection, sprint tracking
+5. **Notion** — Unlocks 1:1 history and goal tracking
+6. **Granola** — Unlocks meeting notes context
+7. **GitHub** — Unlocks PR review queue (if staying hands-on)
 
 You can always add more servers later. The system degrades gracefully —
 if a server isn't connected, Claude simply skips that channel during triage.

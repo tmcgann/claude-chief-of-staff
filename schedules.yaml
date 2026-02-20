@@ -16,19 +16,31 @@ schedules:
     skill: "/gm"
     frequency: "Daily at 7:00am"
     enabled: true
-    notes: "Full briefing with calendar, tasks, and urgent items"
+    notes: "Full briefing with calendar, squad status, tasks, code reviews, and hiring"
+
+  - name: "Monday Squad Review Prep"
+    skill: "/weekly plan"
+    frequency: "Monday at 7:30am"
+    enabled: true
+    notes: "Pull Linear status per squad, prep for Monday review meetings"
 
   - name: "Midday Triage"
     skill: "/triage"
     frequency: "Daily at 12:00pm"
     enabled: true
-    notes: "Scan all channels for items needing attention"
+    notes: "Scan Slack, Linear, GitHub, Gmail for items needing attention"
 
   - name: "Evening Triage"
-    skill: "/triage"
+    skill: "/triage quick"
     frequency: "Daily at 5:00pm"
     enabled: true
-    notes: "End of day inbox check"
+    notes: "End of day quick scan for Tier 1 items only"
+
+  - name: "Thursday Planning Prep"
+    skill: "/weekly status"
+    frequency: "Thursday at 7:30am"
+    enabled: true
+    notes: "Generate cross-squad status for backlog grooming with Firas and Forrest"
 
   - name: "Task Check"
     skill: "/my-tasks overdue"
@@ -36,11 +48,29 @@ schedules:
     enabled: true
     notes: "Warn about overdue or at-risk tasks"
 
+  - name: "Shout-Out Review"
+    skill: "/shoutouts review"
+    frequency: "Weekly, Sunday at 7pm"
+    enabled: true
+    notes: "Review accumulated shout-outs before all-hands"
+
+  - name: "Biweekly 1:1 Prep"
+    skill: "/1on1"
+    frequency: "Day before each scheduled 1:1"
+    enabled: false
+    notes: "Auto-prep for upcoming 1:1s — enable once 1:1 cadence is established"
+
+  - name: "Weekly Retro"
+    skill: "/weekly retro"
+    frequency: "Friday at 4:00pm"
+    enabled: true
+    notes: "Week-in-review: what shipped, what didn't, shout-out candidates"
+
   - name: "Relationship Check"
     skill: "/enrich stale"
     frequency: "Weekly, Monday at 9am"
-    enabled: false
-    notes: "Surface contacts that need attention"
+    enabled: true
+    notes: "Surface contacts that need attention, especially direct reports"
 
 # To set up automated scheduling, you need a way to trigger
 # Claude Code sessions on a schedule. Options:

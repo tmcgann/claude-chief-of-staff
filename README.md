@@ -1,30 +1,26 @@
-# My AI Chief of Staff
+# AI Chief of Staff — Engineering Manager Edition
 
-I'm [Mike Murchison](https://linkedin.com/in/mikemurchison), CEO of [Ada](https://ada.cx) — the agentic customer experience platform. Over the past few months, I've been building something on Claude Code that has fundamentally changed how I work: an AI chief of staff that connects to every tool I use, knows my priorities and relationships, and operates 24/7 in the background.
+Forked from [Mike Murchison's AI Chief of Staff](https://github.com/mimurchison/claude-chief-of-staff) (CEO of [Ada](https://ada.cx)), adapted for engineering managers.
 
-A lot of people have been asking about the setup — at the Claude Code meetup, in conversations with other CEOs, and across our team at Ada where we've been building AI-native operations into how we run the company. So I'm open-sourcing it for you to try, adapt, and improve.
+I'm [Taylor McGann](https://linkedin.com/in/taylormcgann), Engineering Manager at [Neo.Tax](https://neo.tax). I manage 7 engineers across 3 squads and needed a version of the AI Chief of Staff that optimizes for what EMs actually spend time on: keeping engineers unblocked, developing people, shipping reliably, hiring, and staying technical.
 
-This repo gives you the same foundation. Your context, your goals, your voice.
-
-Watch the walkthrough and demo [here](https://x.com/mimurchison/status/2022368529417224480)
+This repo gives you the same AI-powered operating system, reframed for engineering management.
 
 ---
 
 ## What It Does
 
-Four pillars. One system.
-
 ### 1. Communicate
-Triage your inbox across email, Slack, and messaging. Get draft responses written in your voice, prioritized by who matters most. I went from 90 minutes of morning inbox processing to about 5.
+Triage Slack, Linear, GitHub, and email. Draft responses in your voice, prioritized by who's blocked and what's urgent. Engineers waiting on you get surfaced first.
 
-### 2. Learn
-Morning briefings, meeting prep, market signals — all automated. Before every meeting, Claude pulls context from every source: past emails, meeting notes, CRM data, calendar history. You walk in prepared without doing the prep.
+### 2. Manage Your Team
+1:1 prep with context from Linear, Slack, and meeting notes. Coaching and feedback tracking per direct report. Shout-out tracking for all-hands recognition. Hiring pipeline management.
 
-### 3. Deepen Relationships
-A personal CRM that builds itself. 160+ contacts tracked, auto-enriched every 15 minutes across all channels. Staleness alerts when important relationships go quiet. Suggested outreach with context. I never forget to follow up.
+### 3. Stay On Top of Delivery
+Cross-squad status at a glance. Blocker detection from Linear. Weekly planning prep for sprint reviews. Status updates ready for your CTO.
 
 ### 4. Achieve Goals
-Define your quarterly objectives. Every triage decision, scheduling recommendation, and task prioritization is filtered through what you said matters most. Claude tells me when my calendar doesn't match my goals.
+Define quarterly objectives. Every triage decision, scheduling recommendation, and task prioritization is filtered through what you said matters most. Claude flags when your calendar doesn't match your goals.
 
 ---
 
@@ -35,12 +31,14 @@ Define your quarterly objectives. Every triage decision, scheduling recommendati
 - [Claude Code CLI](https://docs.anthropic.com/en/docs/claude-code) installed and authenticated
 - Gmail MCP server (for email)
 - Google Calendar MCP server (for scheduling)
+- Slack MCP server (recommended — where most EM communication happens)
+- Linear MCP server (recommended — for squad status tracking)
 
 ### 3 Steps
 
 ```bash
 # 1. Clone
-git clone https://github.com/mimurchison/claude-chief-of-staff.git
+git clone https://github.com/taylormcgann/claude-chief-of-staff.git
 cd claude-chief-of-staff
 
 # 2. Install
@@ -52,32 +50,25 @@ claude
 # Then type: /gm
 ```
 
-First morning briefing in under 15 minutes from clone.
-
 ---
 
-## Features
+## Commands
 
-### Morning Briefing (`/gm`)
-Start every day knowing exactly what matters. Calendar, tasks, urgent messages, signals — before you open your inbox.
+### Core (from original)
+| Command | What It Does |
+|---------|-------------|
+| `/gm` | Morning briefing — calendar, squad status, tasks, code reviews, hiring |
+| `/triage` | Inbox triage across Slack, Linear, GitHub, Gmail |
+| `/my-tasks` | Task tracking with execution support |
+| `/enrich` | Contact enrichment with coaching note tracking |
 
-### Inbox Triage (`/triage`)
-Scan all connected channels and get a prioritized list with draft responses.
-
-| Tier | Action | Example |
-|------|--------|---------|
-| **Tier 1** | Respond NOW | Board member asking for input |
-| **Tier 2** | Handle today | Customer escalation |
-| **Tier 3** | FYI / archive | Newsletters, notifications |
-
-### Task Management (`/my-tasks`)
-Tasks with execution, not just tracking. Claude drafts the email, does the research, preps the document.
-
-### Contact Enrichment (`/enrich`)
-Auto-scans email, Slack, WhatsApp, calendar, and meeting notes to build rich relationship profiles. Alerts you when contacts go stale. Suggests what to talk about.
-
-### Goal-Aligned Everything
-Your `goals.yaml` is the source of truth. Claude references it constantly — triaging email, proposing meetings, scoring tasks. It pushes back when your time allocation drifts from your stated priorities.
+### New for EMs
+| Command | What It Does |
+|---------|-------------|
+| `/1on1 <name>` | 1:1 prep — pulls Linear, Slack, Notion, coaching notes |
+| `/hiring [status\|prep\|debrief\|jd]` | Hiring pipeline management |
+| `/weekly [plan\|status\|retro]` | Weekly squad review, status updates, retros |
+| `/shoutouts [add\|review\|draft]` | Track and draft all-hands recognition |
 
 ---
 
@@ -85,41 +76,62 @@ Your `goals.yaml` is the source of truth. Claude references it constantly — tr
 
 ```
 claude-chief-of-staff/
-├── CLAUDE.md                    # Your AI operating system — customize this
-├── install.sh                   # One-command setup
-├── goals.yaml                   # Quarterly objectives template
-├── my-tasks.yaml                # Task tracking
-├── schedules.yaml               # Automation schedules
+├── CLAUDE.md                         # AI operating system — EM edition
+├── install.sh                        # One-command setup
+├── goals.yaml                        # Quarterly objectives
+├── my-tasks.yaml                     # Task tracking
+├── schedules.yaml                    # Automation schedules
+├── shoutouts.yaml                    # Shout-out tracker
 ├── contacts/
-│   └── example-contact.md       # Contact file template
+│   ├── example-contact.md            # General contact template
+│   └── direct-report-template.md     # Direct report template (with coaching, feedback, career)
 ├── commands/
-│   ├── gm.md                    # Morning briefing
-│   ├── triage.md                # Inbox triage
-│   ├── my-tasks.md              # Task management
-│   └── enrich.md                # Contact enrichment
+│   ├── gm.md                         # Morning briefing (EM-adapted)
+│   ├── triage.md                     # Inbox triage (Slack + Linear + GitHub focus)
+│   ├── my-tasks.md                   # Task management
+│   ├── enrich.md                     # Contact enrichment (with coaching notes)
+│   ├── 1on1.md                       # 1:1 prep
+│   ├── hiring.md                     # Hiring pipeline
+│   ├── weekly.md                     # Weekly planning & retros
+│   └── shoutouts.md                  # Shout-out tracking
 └── docs/
-    ├── setup-guide.md           # Detailed setup walkthrough
-    ├── mcp-servers.md           # MCP server installation
-    └── customization.md         # Make it yours
+    ├── setup-guide.md                # Detailed setup walkthrough
+    ├── mcp-servers.md                # MCP server installation (EM-focused)
+    └── customization.md              # Customization guide
 ```
 
 ---
 
 ## MCP Servers
 
-More servers = more capability. Start with the essentials, add over time.
-
-| Server | Required? | What It Enables |
-|--------|-----------|-----------------|
-| Gmail | **Yes** | Email triage, drafting, sending |
-| Google Calendar | **Yes** | Scheduling, availability, meeting prep |
-| Slack | Recommended | Slack triage, channel monitoring |
-| WhatsApp | Optional | WhatsApp message triage |
-| iMessage | Optional | iMessage triage (macOS only) |
-| Granola | Optional | Meeting notes context |
-| PostHog | Optional | Product analytics |
+| Server | Priority | What It Enables |
+|--------|----------|-----------------|
+| Gmail | **Required** | Email triage, drafting |
+| Google Calendar | **Required** | Scheduling, availability, meeting prep |
+| Slack | **Required** | Team communication, blocker detection |
+| Linear | **Required** | Sprint tracking, squad status, blockers |
+| Notion | Recommended | 1:1 notes, quarterly goals, team docs |
+| Granola | Recommended | Meeting notes context |
+| GitHub | Optional | PR review queue, CI status |
+| Workable | Optional | Hiring pipeline (ATS) |
 
 See [docs/mcp-servers.md](docs/mcp-servers.md) for installation instructions.
+
+---
+
+## What Changed from the Original
+
+The [original repo](https://github.com/mimurchison/claude-chief-of-staff) was built for a CEO. This fork adapts it for engineering managers:
+
+| Area | CEO Version | EM Version |
+|------|------------|------------|
+| **Primary channels** | Email, WhatsApp, iMessage | Slack, Linear, GitHub, Email |
+| **Key relationships** | Board, investors, customers | Direct reports, CTO, PM |
+| **Core activities** | Fundraising, board prep, exec comms | 1:1s, coaching, hiring, delivery |
+| **New commands** | — | `/1on1`, `/hiring`, `/weekly`, `/shoutouts` |
+| **Contact tracking** | General CRM | Direct report coaching + feedback logs |
+| **Triage focus** | External stakeholders | Engineer blockers + team communication |
+| **Recognition** | — | Shout-out tracker for all-hands |
 
 ---
 
@@ -127,11 +139,11 @@ See [docs/mcp-servers.md](docs/mcp-servers.md) for installation instructions.
 
 The `CLAUDE.md` file is the core. It defines:
 
-- **Who you are** and what you care about
-- **How you write** so every draft sounds like you
-- **Your goals** so Claude knows what matters
-- **Your constraints** (mine: home by 5:30 for dinner)
-- **Your relationships** and how to manage them
+- **Your team** — squad structure, direct reports, cross-functional partners
+- **How you write** — so every draft sounds like you
+- **Your goals** — so Claude knows what matters
+- **Your constraints** — meeting times, weekly rhythm
+- **Your coaching approach** — growth areas, feedback style
 
 The longer you use it, the better it gets. Context compounds.
 
@@ -139,37 +151,15 @@ See [docs/customization.md](docs/customization.md) for the full guide.
 
 ---
 
-## Philosophy
+## Credits
 
-A few beliefs this system is built on:
-
-1. **AI should push you, not just serve you.** A great chief of staff challenges priorities, says "no" to low-leverage work, and keeps you honest about where your time goes.
-
-2. **Clarity beats comprehensiveness.** Fewer, clearer priorities. Explicit tradeoffs. Fast decisions with flagged assumptions.
-
-3. **Systems compound.** Every interaction makes the system smarter. Contact notes get richer. Writing style gets more accurate. The longer you use it, the better it gets.
-
-4. **Ship, don't polish.** Drafts should be send-ready. Outputs should be usable immediately. Bias toward closing loops.
-
----
-
-## Contributing
-
-This is early and evolving. If you build useful commands, improve the templates, or add MCP server guides — contributions are very welcome. I'd love to hear what you build with it.
-
-1. Fork the repo
-2. Create a feature branch
-3. Submit a pull request
-
-Or just open an issue with feedback.
+Built on top of [Mike Murchison's AI Chief of Staff](https://github.com/mimurchison/claude-chief-of-staff). Watch his [walkthrough and demo](https://x.com/mimurchison/status/2022368529417224480).
 
 ---
 
 ## Stay Connected
 
-- [@mimurchison](https://twitter.com/mimurchison) on Twitter/X
-- [Mike Murchison](https://linkedin.com/in/mikemurchison) on LinkedIn
-- [Ada](https://ada.cx) — the agentic customer experience platform
+- [Taylor McGann](https://linkedin.com/in/taylormcgann) on LinkedIn
 
 ---
 

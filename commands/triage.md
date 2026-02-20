@@ -11,13 +11,13 @@ and draft responses in your voice. Clear your inbox in minutes.
 
 ## Instructions
 
-You are running inbox triage for {{YOUR_NAME}}. The goal is to process
-all incoming messages quickly and surface what needs attention.
+You are running inbox triage for Taylor McGann (Engineering Manager, Neo.Tax).
+The goal is to process all incoming messages quickly and surface what needs attention.
 
 ### Step 0: Verify Time and Context
 
 Get the current time so you know what "today" and "recent" mean.
-Check the calendar briefly to understand where the user is in their day.
+Check the calendar briefly to understand where Taylor is in their day.
 
 ### Step 1: Scan Channels
 
@@ -26,22 +26,28 @@ Report progress as you go.
 
 **Channels to scan (in order):**
 
-1. **Work Email (Gmail)** — Search for recent unread/unreplied emails
+1. **Slack** — Primary communication channel for engineering
+   - Query: Recent DMs and @mentions
+   - Focus on: Direct reports asking for help, blockers, review requests
+   - Check: Messages from Firas (CTO), Forrest (PM), Ibrahim (CEO)
+   - Skip: Channel chatter unless directly relevant or tagging Taylor
+
+2. **Linear** — Engineering work tracking
+   - Check: Issues assigned to Taylor or needing Taylor's input
+   - Check: Blocked issues across all 3 squads (ASC, R&D, Platform)
+   - Check: Unassigned issues in Taylor's squads
+   - Check: Stale issues (no update in 5+ days)
+
+3. **GitHub** — Code and PRs
+   - Check: PRs where Taylor is a requested reviewer
+   - Check: PRs from direct reports waiting 24+ hours
+   - Check: CI failures on open PRs
+   - Check: @mentions in PR comments
+
+4. **Gmail** — Work email
    - Query: Messages from the last 24 hours (or since last triage)
    - Focus on: Direct emails (not newsletters, automated, or CC-only)
-
-2. **Personal Email** — If connected, same approach
-   - Focus on: Anything from key contacts or family
-
-3. **Slack** — Check DMs and mentions
-   - Query: Recent DMs and @mentions
-   - Skip: Channel chatter unless directly relevant
-
-4. **WhatsApp** — If connected, check recent messages
-   - Focus on: Direct messages requiring response
-
-5. **iMessage** — If connected (macOS only)
-   - Focus on: Unreplied messages from contacts
+   - Priority: Emails from leadership, candidates, cross-functional partners
 
 ### Step 2: Classify Each Item
 
@@ -49,31 +55,35 @@ For each item found, assign a triage tier:
 
 | Tier | Criteria | Action |
 |------|----------|--------|
-| **Tier 1** | From key contacts, time-sensitive, blocking someone, or explicit urgency | Respond NOW |
-| **Tier 2** | Important but not urgent, requires thoughtful response, due today | Handle today |
-| **Tier 3** | FYI, newsletters, automated notifications, low-stakes | Archive or brief ack |
+| **Tier 1** | Direct report blockers, CTO/CEO requests, production incidents, hiring deadlines, someone blocked waiting on Taylor | Respond NOW |
+| **Tier 2** | PR reviews, cross-functional requests, planning items, candidate scheduling, non-urgent team questions | Handle today |
+| **Tier 3** | Newsletters, automated notifications, FYI threads, bot messages, informational updates | Archive or brief ack |
 
 **Tier assignment factors:**
-- Who sent it? (Key contacts and leadership = higher tier)
-- Is someone blocked waiting for a response?
-- Is there a deadline mentioned?
+- Is an engineer blocked waiting for Taylor?
+- Is it from Firas (CTO), Ibrahim (CEO), or Forrest (PM)?
+- Is there a deadline or time-sensitivity?
 - Has it been waiting a long time? (Older = higher urgency)
+- Does it relate to hiring (time-sensitive by nature)?
 - Does it align with active goals?
 
-### Step 3: Check for Already-Replied
+### Step 3: Check for Already-Handled
 
-Before drafting any response, verify the user hasn't already replied:
+Before drafting any response, verify Taylor hasn't already responded:
 - Check sent mail for responses to the same thread
-- Check if the contact file shows a more recent interaction
+- Check Slack thread for Taylor's replies
 - If already handled, skip it entirely
 
 ### Step 4: Draft Responses
 
 For each actionable item (Tier 1 and Tier 2), draft a response that:
-- Matches the user's writing style (reference CLAUDE.md Part 4)
+- Matches Taylor's writing style (reference CLAUDE.md Part 4)
 - Is send-ready (not a starting point for editing)
 - Is appropriately concise for the context
 - Includes specific scheduling proposals if timing is involved (verify calendar first)
+- For Slack: matches Slack's casual tone
+- For Linear: provides clear direction or unblocks
+- For GitHub: provides substantive review feedback
 
 For `quick` mode: Skip drafts, just list Tier 1 items.
 For `digest` mode: Include drafts for Tier 1, summaries for Tier 2.
@@ -97,6 +107,15 @@ TIER 2 — Handle Today
 
 4. ...
 
+LINEAR — Needs Attention
+- [X] blocked issues across squads
+- [X] unassigned issues
+- [X] stale issues (5+ days without update)
+
+GITHUB — Review Queue
+- [PR title] by [author] — [age] ([files changed])
+- ...
+
 TIER 3 — FYI
 5-N. [Brief list, auto-archived if possible]
 
@@ -107,7 +126,7 @@ SUMMARY: [X] items need action, [Y] drafts ready to send.
 
 **NEVER send any message without explicit approval.**
 
-After presenting drafts, wait for the user to:
+After presenting drafts, wait for Taylor to:
 - Say "Send" or "Y" to approve a specific draft
 - Say "Send all" to approve all drafts
 - Edit a draft and then approve
@@ -116,8 +135,10 @@ After presenting drafts, wait for the user to:
 ### Guidelines
 
 - Speed matters. A triage should take 2-3 minutes, not 10.
-- Don't over-explain. The user knows their contacts — just surface what's important.
+- Don't over-explain. Taylor knows the team — just surface what's important.
 - If a channel's MCP server isn't connected, skip it silently.
 - Track what was surfaced to avoid re-surfacing in the next triage run.
 - If you find nothing urgent, say so clearly: "Inbox clear. No items need immediate attention."
 - For long email threads, summarize the thread — don't just quote the last message.
+- For Linear, focus on blockers and stale items — don't list every issue.
+- When scanning Slack, watch for engineers asking for help or flagging problems — these are often implicit Tier 1 items even if not marked urgent.

@@ -1,6 +1,6 @@
 #!/bin/bash
 
-# AI Chief of Staff — Installer
+# AI Chief of Staff (Engineering Manager Edition) — Installer
 # Sets up your personal AI operating system in ~/.claude/
 
 set -e
@@ -15,10 +15,10 @@ NC='\033[0m' # No Color
 
 echo ""
 echo -e "${BOLD}============================================${NC}"
-echo -e "${BOLD}   AI Chief of Staff — Setup${NC}"
+echo -e "${BOLD}   AI Chief of Staff — EM Edition Setup${NC}"
 echo -e "${BOLD}============================================${NC}"
 echo ""
-echo "This will set up your personal AI operating system"
+echo "This will set up your AI operating system for engineering management"
 echo "by installing template files to ~/.claude/"
 echo ""
 
@@ -39,22 +39,31 @@ echo -e "${BLUE}Let's personalize your setup.${NC}"
 echo ""
 
 read -p "Your full name: " USER_NAME
-read -p "Your first name (for email sign-offs): " FIRST_NAME
-read -p "Your role/title: " USER_ROLE
-read -p "Your company: " USER_COMPANY
+read -p "Your first name (for message sign-offs): " FIRST_NAME
 read -p "Work email: " WORK_EMAIL
 read -p "Personal email: " PERSONAL_EMAIL
-read -p "Company website (e.g., example.com): " COMPANY_URL
+
+echo ""
+echo -e "${BLUE}Your team structure:${NC}"
+read -p "Company name: " USER_COMPANY
+read -p "Your CTO's name: " CTO_NAME
+read -p "Your PM's name: " PM_NAME
+
+echo ""
+echo -e "${BLUE}Your squads (enter member names, comma-separated):${NC}"
+read -p "Squad 1 name (e.g., ASC): " SQUAD1_NAME
+read -p "Squad 1 members: " SQUAD1_MEMBERS
+read -p "Squad 2 name (e.g., R&D Product): " SQUAD2_NAME
+read -p "Squad 2 members: " SQUAD2_MEMBERS
+read -p "Squad 3 name (e.g., Platform): " SQUAD3_NAME
+read -p "Squad 3 members: " SQUAD3_MEMBERS
 
 echo ""
 echo -e "${BLUE}Time constraints (leave blank to skip):${NC}"
-read -p "Home by what time? (e.g., 6:00 PM): " DINNER_TIME
 read -p "Earliest meeting time? (e.g., 9:00 AM): " EARLIEST_MEETING
 
 echo ""
 echo -e "${BLUE}Preferences:${NC}"
-read -p "Currency (USD/CAD/EUR/GBP): " CURRENCY
-CURRENCY=${CURRENCY:-USD}
 read -p "Timezone (e.g., America/New_York): " TIMEZONE
 TIMEZONE=${TIMEZONE:-America/New_York}
 
@@ -79,17 +88,10 @@ cp "$SCRIPT_DIR/CLAUDE.md" "$CLAUDE_DIR/CLAUDE.md"
 # Replace placeholders
 sed -i.bak "s/{{YOUR_NAME}}/$USER_NAME/g" "$CLAUDE_DIR/CLAUDE.md"
 sed -i.bak "s/{{YOUR_FIRST_NAME}}/$FIRST_NAME/g" "$CLAUDE_DIR/CLAUDE.md"
-sed -i.bak "s/{{YOUR_ROLE}}/$USER_ROLE/g" "$CLAUDE_DIR/CLAUDE.md"
-sed -i.bak "s/{{YOUR_COMPANY}}/$USER_COMPANY/g" "$CLAUDE_DIR/CLAUDE.md"
 sed -i.bak "s/{{WORK_EMAIL}}/$WORK_EMAIL/g" "$CLAUDE_DIR/CLAUDE.md"
 sed -i.bak "s/{{PERSONAL_EMAIL}}/$PERSONAL_EMAIL/g" "$CLAUDE_DIR/CLAUDE.md"
-sed -i.bak "s|{{COMPANY_URL}}|$COMPANY_URL|g" "$CLAUDE_DIR/CLAUDE.md"
-sed -i.bak "s/{{CURRENCY}}/$CURRENCY/g" "$CLAUDE_DIR/CLAUDE.md"
 sed -i.bak "s|{{TIMEZONE}}|$TIMEZONE|g" "$CLAUDE_DIR/CLAUDE.md"
 
-if [ -n "$DINNER_TIME" ]; then
-    sed -i.bak "s/{{DINNER_TIME}}/$DINNER_TIME/g" "$CLAUDE_DIR/CLAUDE.md"
-fi
 if [ -n "$EARLIEST_MEETING" ]; then
     sed -i.bak "s/{{EARLIEST_MEETING_TIME}}/$EARLIEST_MEETING/g" "$CLAUDE_DIR/CLAUDE.md"
 fi
@@ -114,7 +116,9 @@ copy_if_missing() {
 copy_if_missing "$SCRIPT_DIR/goals.yaml" "$CLAUDE_DIR/goals.yaml"
 copy_if_missing "$SCRIPT_DIR/my-tasks.yaml" "$CLAUDE_DIR/my-tasks.yaml"
 copy_if_missing "$SCRIPT_DIR/schedules.yaml" "$CLAUDE_DIR/schedules.yaml"
+copy_if_missing "$SCRIPT_DIR/shoutouts.yaml" "$CLAUDE_DIR/shoutouts.yaml"
 copy_if_missing "$SCRIPT_DIR/contacts/example-contact.md" "$CLAUDE_DIR/contacts/example-contact.md"
+copy_if_missing "$SCRIPT_DIR/contacts/direct-report-template.md" "$CLAUDE_DIR/contacts/direct-report-template.md"
 
 # Copy commands
 for cmd in "$SCRIPT_DIR/commands/"*.md; do
@@ -133,31 +137,41 @@ echo ""
 echo "Files installed to: $CLAUDE_DIR/"
 echo ""
 echo -e "${BOLD}Installed:${NC}"
-echo "  CLAUDE.md          — Your AI operating system config"
-echo "  goals.yaml         — Quarterly objectives (edit these!)"
-echo "  my-tasks.yaml      — Task tracking"
-echo "  schedules.yaml     — Automation schedules"
-echo "  contacts/          — Contact files"
-echo "  commands/          — Skill definitions (gm, triage, my-tasks, enrich)"
+echo "  CLAUDE.md                     — Your AI operating system config"
+echo "  goals.yaml                    — Quarterly objectives (edit these!)"
+echo "  my-tasks.yaml                 — Task tracking"
+echo "  schedules.yaml                — Automation schedules"
+echo "  shoutouts.yaml                — Shout-out tracker for all-hands"
+echo "  contacts/                     — Contact files + direct report template"
+echo "  commands/                     — Skills: gm, triage, my-tasks, enrich,"
+echo "                                  1on1, hiring, weekly, shoutouts"
 echo ""
 echo -e "${BOLD}Next steps:${NC}"
 echo ""
-echo -e "  ${BLUE}1.${NC} Connect MCP servers (at minimum: Gmail + Google Calendar)"
+echo -e "  ${BLUE}1.${NC} Connect MCP servers (at minimum: Gmail + Google Calendar + Slack)"
 echo "     See docs/mcp-servers.md for installation instructions"
+echo "     Recommended: also connect Linear for squad status tracking"
 echo ""
 echo -e "  ${BLUE}2.${NC} Edit your goals:"
 echo "     Open $CLAUDE_DIR/goals.yaml and define your real objectives"
 echo ""
 echo -e "  ${BLUE}3.${NC} Customize your CLAUDE.md:"
 echo "     Open $CLAUDE_DIR/CLAUDE.md and fill in the remaining placeholders"
-echo "     (writing style, team members, hard constraints)"
+echo "     (writing style examples, hard constraints, timezone)"
 echo ""
-echo -e "  ${BLUE}4.${NC} Try it out:"
+echo -e "  ${BLUE}4.${NC} Create contact files for your direct reports:"
+echo "     Copy contacts/direct-report-template.md for each team member"
+echo "     Or run /enrich <name> to auto-create from channel data"
+echo ""
+echo -e "  ${BLUE}5.${NC} Try it out:"
 echo "     $ claude"
-echo "     > /gm            # Morning briefing"
-echo "     > /triage         # Inbox triage"
-echo "     > /my-tasks list  # See your tasks"
+echo "     > /gm              # Morning briefing"
+echo "     > /triage           # Inbox triage"
+echo "     > /1on1 <name>      # 1:1 prep"
+echo "     > /weekly plan      # Monday squad review prep"
+echo "     > /hiring status    # Hiring pipeline"
+echo "     > /shoutouts review # Check pending recognition"
 echo ""
 echo -e "${YELLOW}Tip:${NC} The more you customize CLAUDE.md, the better Claude performs."
-echo "     Spend 30 minutes filling in your writing style examples and team info."
+echo "     Spend 30 minutes filling in your writing style examples and team notes."
 echo ""
