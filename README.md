@@ -2,7 +2,7 @@
 
 Forked from [Mike Murchison's AI Chief of Staff](https://github.com/mimurchison/claude-chief-of-staff) (CEO of [Ada](https://ada.cx)), adapted for engineering managers.
 
-I'm [Taylor McGann](https://linkedin.com/in/taylormcgann), Engineering Manager at [Neo.Tax](https://neo.tax). I manage 7 engineers across 3 squads and needed a version of the AI Chief of Staff that optimizes for what EMs actually spend time on: keeping engineers unblocked, developing people, shipping reliably, hiring, and staying technical.
+I'm [Taylor McGann](https://www.linkedin.com/in/taylor-mcgann), Engineering Manager at [Neo.Tax](https://neo.tax). I manage 7 engineers across 3 squads and needed a version of the AI Chief of Staff that optimizes for what EMs actually spend time on: keeping engineers unblocked, developing people, shipping reliably, hiring, and staying technical.
 
 This repo gives you the same AI-powered operating system, reframed for engineering management.
 
@@ -50,25 +50,44 @@ claude
 # Then type: /gm
 ```
 
+First morning briefing in under 15 minutes from clone.
+
 ---
 
-## Commands
+## Features
 
-### Core (from original)
-| Command | What It Does |
-|---------|-------------|
-| `/gm` | Morning briefing — calendar, squad status, tasks, code reviews, hiring |
-| `/triage` | Inbox triage across Slack, Linear, GitHub, Gmail |
-| `/my-tasks` | Task tracking with execution support |
-| `/enrich` | Contact enrichment with coaching note tracking |
+### Morning Briefing (`/gm`)
+Start every day knowing exactly what matters. Calendar, squad status across all your teams, code review queue, task deadlines, hiring pipeline, and urgent messages — before you open your inbox.
 
-### New for EMs
-| Command | What It Does |
-|---------|-------------|
-| `/1on1 <name>` | 1:1 prep — pulls Linear, Slack, Notion, coaching notes |
-| `/hiring [status\|prep\|debrief\|jd]` | Hiring pipeline management |
-| `/weekly [plan\|status\|retro]` | Weekly squad review, status updates, retros |
-| `/shoutouts [add\|review\|draft]` | Track and draft all-hands recognition |
+### Inbox Triage (`/triage`)
+Scan all connected channels and get a prioritized list with draft responses.
+
+| Tier | Action | Example |
+|------|--------|---------|
+| **Tier 1** | Respond NOW | Engineer blocked, CTO request, production incident |
+| **Tier 2** | Handle today | PR review, cross-functional request, candidate scheduling |
+| **Tier 3** | FYI / archive | Newsletters, bot messages, FYI threads |
+
+### 1:1 Prep (`/1on1`)
+Before every 1:1, Claude pulls context from Linear (recent work, blockers), Slack (interactions), Notion (past 1:1 notes), and your coaching files. You walk in with action items, feedback to deliver, and coaching questions ready.
+
+### Weekly Planning (`/weekly`)
+Monday squad review prep with Linear status per squad. Cross-squad status updates for your CTO anytime. Friday retros that surface what shipped, what didn't, and who to recognize.
+
+### Hiring Pipeline (`/hiring`)
+Track open roles, prep for interviews with suggested questions, run structured debriefs, and draft job descriptions. Flags when candidates have been waiting too long.
+
+### Shout-Out Tracker (`/shoutouts`)
+Log contributions worth recognizing as you spot them. Before all-hands, review accumulated shout-outs and get draft messages ready to deliver. Coverage checks ensure recognition is distributed across the team.
+
+### Task Management (`/my-tasks`)
+Tasks with execution, not just tracking. Claude drafts the email, does the research, preps the document. Goal alignment keeps you honest about where time goes.
+
+### Contact Enrichment (`/enrich`)
+Auto-scans Slack, Linear, GitHub, email, and meeting notes to build rich relationship profiles. For direct reports, tracks coaching notes, feedback delivery, and growth areas. Alerts you when contacts go stale.
+
+### Goal-Aligned Everything
+Your `goals.yaml` is the source of truth. Claude references it constantly — triaging messages, proposing meetings, scoring tasks. It pushes back when your time allocation drifts from your stated priorities.
 
 ---
 
@@ -137,22 +156,6 @@ See [docs/mcp-servers.md](docs/mcp-servers.md) for installation instructions.
 
 ---
 
-## What Changed from the Original
-
-The [original repo](https://github.com/mimurchison/claude-chief-of-staff) was built for a CEO. This fork adapts it for engineering managers:
-
-| Area | CEO Version | EM Version |
-|------|------------|------------|
-| **Primary channels** | Email, WhatsApp, iMessage | Slack, Linear, GitHub, Email |
-| **Key relationships** | Board, investors, customers | Direct reports, CTO, PM |
-| **Core activities** | Fundraising, board prep, exec comms | 1:1s, coaching, hiring, delivery |
-| **New commands** | — | `/1on1`, `/hiring`, `/weekly`, `/shoutouts` |
-| **Contact tracking** | General CRM | Direct report coaching + feedback logs |
-| **Triage focus** | External stakeholders | Engineer blockers + team communication |
-| **Recognition** | — | Shout-out tracker for all-hands |
-
----
-
 ## Customization
 
 The `CLAUDE.md` file is the core. It defines:
@@ -169,6 +172,22 @@ See [docs/customization.md](docs/customization.md) for the full guide.
 
 ---
 
+## Philosophy
+
+A few beliefs this system is built on:
+
+1. **AI should push you, not just serve you.** A great chief of staff challenges priorities, says "no" to low-leverage work, and keeps you honest about where your time goes.
+
+2. **Your team comes first.** The highest-leverage thing an EM can do is keep engineers unblocked, growing, and recognized. Everything else exists to serve that.
+
+3. **Clarity beats comprehensiveness.** Fewer, clearer priorities. Explicit tradeoffs. Fast decisions with flagged assumptions.
+
+4. **Systems compound.** Every interaction makes the system smarter. Contact notes get richer. Coaching history builds. The longer you use it, the better it gets.
+
+5. **Ship, don't polish.** Drafts should be send-ready. Outputs should be usable immediately. Bias toward closing loops.
+
+---
+
 ## Credits
 
 Built on top of [Mike Murchison's AI Chief of Staff](https://github.com/mimurchison/claude-chief-of-staff). Watch his [walkthrough and demo](https://x.com/mimurchison/status/2022368529417224480).
@@ -177,7 +196,7 @@ Built on top of [Mike Murchison's AI Chief of Staff](https://github.com/mimurchi
 
 ## Stay Connected
 
-- [Taylor McGann](https://linkedin.com/in/taylormcgann) on LinkedIn
+- [Taylor McGann](https://www.linkedin.com/in/taylor-mcgann) on LinkedIn
 
 ---
 
