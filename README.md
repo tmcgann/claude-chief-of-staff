@@ -77,28 +77,33 @@ claude
 ```
 claude-chief-of-staff/
 ├── CLAUDE.md                         # AI operating system — EM edition
-├── install.sh                        # One-command setup
+├── install.sh                        # Setup + update script
 ├── goals.yaml                        # Quarterly objectives
 ├── my-tasks.yaml                     # Task tracking
 ├── schedules.yaml                    # Automation schedules
 ├── shoutouts.yaml                    # Shout-out tracker
+├── .claude/
+│   └── skills/                       # Claude Code slash commands
+│       ├── gm/SKILL.md              # /gm — Morning briefing
+│       ├── triage/SKILL.md          # /triage — Inbox triage
+│       ├── my-tasks/SKILL.md        # /my-tasks — Task management
+│       ├── enrich/SKILL.md          # /enrich — Contact enrichment
+│       ├── 1on1/SKILL.md           # /1on1 — 1:1 prep
+│       ├── hiring/SKILL.md         # /hiring — Hiring pipeline
+│       ├── weekly/SKILL.md         # /weekly — Weekly planning & retros
+│       └── shoutouts/SKILL.md      # /shoutouts — Shout-out tracking
 ├── contacts/
 │   ├── example-contact.md            # General contact template
-│   └── direct-report-template.md     # Direct report template (with coaching, feedback, career)
-├── commands/
-│   ├── gm.md                         # Morning briefing (EM-adapted)
-│   ├── triage.md                     # Inbox triage (Slack + Linear + GitHub focus)
-│   ├── my-tasks.md                   # Task management
-│   ├── enrich.md                     # Contact enrichment (with coaching notes)
-│   ├── 1on1.md                       # 1:1 prep
-│   ├── hiring.md                     # Hiring pipeline
-│   ├── weekly.md                     # Weekly planning & retros
-│   └── shoutouts.md                  # Shout-out tracking
+│   └── direct-report-template.md     # Direct report template
 └── docs/
     ├── setup-guide.md                # Detailed setup walkthrough
-    ├── mcp-servers.md                # MCP server installation (EM-focused)
+    ├── mcp-servers.md                # MCP server installation
     └── customization.md              # Customization guide
 ```
+
+Skills live in `.claude/skills/` which is the standard Claude Code convention. They work automatically when you're in this project directory. Run `install.sh` to also install them globally to `~/.claude/skills/` so they work from any project.
+
+**Updating:** Re-run `install.sh` anytime to sync skills to the latest version. It will overwrite skills but preserve your user data (goals, tasks, contacts, shout-outs).
 
 ---
 

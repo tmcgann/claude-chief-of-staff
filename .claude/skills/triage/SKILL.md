@@ -1,3 +1,9 @@
+---
+name: triage
+description: Inbox triage across Slack, Linear, GitHub, and Gmail. Prioritizes items by urgency and drafts responses. Use when processing communications or checking for items needing attention.
+argument-hint: "[quick|digest]"
+---
+
 # /triage — Inbox Triage
 
 ## Description

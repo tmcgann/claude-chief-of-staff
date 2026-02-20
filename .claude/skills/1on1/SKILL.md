@@ -1,3 +1,9 @@
+---
+name: 1on1
+description: 1:1 prep for direct reports. Pulls context from Linear, Slack, Notion, coaching notes, and shout-outs to generate a structured prep document. Use before any 1:1 meeting.
+argument-hint: "<name>"
+---
+
 # /1on1 — 1:1 Prep
 
 ## Description

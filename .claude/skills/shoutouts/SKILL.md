@@ -1,3 +1,9 @@
+---
+name: shoutouts
+description: Track and manage shout-outs for all-hands recognition. Log contributions worth celebrating, review accumulated shout-outs, and draft delivery messages.
+argument-hint: "[add|review|draft]"
+---
+
 # /shoutouts — Shout-Out Tracker
 
 ## Description

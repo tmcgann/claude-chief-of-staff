@@ -17,6 +17,9 @@ logs/
 cache/
 .cache/
 
+# Claude Code local settings
+.claude/settings.local.json
+
 # Local overrides (for users who want to keep personal changes untracked)
 local/
 *.local.md

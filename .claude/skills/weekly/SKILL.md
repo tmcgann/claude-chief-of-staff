@@ -1,3 +1,9 @@
+---
+name: weekly
+description: Weekly planning and review for engineering management. Prep for squad reviews, generate cross-squad status updates, and run end-of-week retros.
+argument-hint: "[plan|status|retro]"
+---
+
 # /weekly — Weekly Review & Planning
 
 ## Description

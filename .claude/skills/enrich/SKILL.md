@@ -1,3 +1,9 @@
+---
+name: enrich
+description: Contact enrichment and personal CRM. Scans Slack, Linear, GitHub, email, and meeting notes to update contact files, track coaching notes, and surface stale relationships.
+argument-hint: "[all|stale|<name>]"
+---
+
 # /enrich — Contact Enrichment
 
 ## Description

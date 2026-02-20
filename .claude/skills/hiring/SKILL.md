@@ -1,3 +1,9 @@
+---
+name: hiring
+description: Hiring pipeline management. Track open roles, prep for interviews, run structured debriefs, and draft job descriptions.
+argument-hint: "[status|prep <candidate>|debrief|jd <role>]"
+---
+
 # /hiring — Hiring Pipeline
 
 ## Description

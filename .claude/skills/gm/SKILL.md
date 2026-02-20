@@ -1,3 +1,8 @@
+---
+name: gm
+description: Morning briefing with calendar, squad status, tasks, code reviews, hiring, and urgent items. Use when starting the day or needing a full status overview.
+---
+
 # /gm — Morning Briefing
 
 ## Description
